@@ -1,0 +1,55 @@
+.pagination__wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.pagination__nav {
+    display: flex;
+    padding: 0;
+}
+
+.pagination__list {
+    list-style: none;
+    text-decoration: none;
+    border: 1px solid gainsboro;
+    padding: 8px 15px;
+}
+
+.pagination__list:first-child {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.pagination__list:last-child {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.pagination__item {
+    text-decoration: none;
+    color: steelblue;
+}
+
+.pagination__list[aria-disabled="true"] {
+    color: gray;
+    cursor: not-allowed;
+}
+
+.pagination__list.active {
+    color: white;
+    background-color: steelblue;
+    border: 1px solid steelblue;
+}
+
+.pagination__list.active:hover {
+    background-color: darkblue;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .pagination__list {
+        padding: 5px 10px;
+    }
+}

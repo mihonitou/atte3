@@ -1,0 +1,107 @@
+/* 全体のスタイル */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ヘッダーのスタイル */
+header {
+    background-color: #f8f9fa;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: auto;
+    min-height: 60px;
+}
+
+.header__main {
+    display: flex;
+    align-items: center;
+    margin-left: 50px;
+}
+
+.header__title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.header__sub {
+    display: flex;
+    margin-right: 50px;
+}
+
+.header__list {
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.header__item {
+    margin-right: 20px;
+}
+
+/* メディアクエリでレスポンシブ対応 */
+@media (max-width: 768px) {
+    .header__sub {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header__item {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}
+    .header__item-link {
+        text-decoration: none;
+        color: #333;
+        font-size: 16px;
+        transition: color 0.3s;
+    }
+
+    .header__item-link:hover {
+        color: #007bff;
+    }
+
+    /* ボタンのリセットスタイル */
+    .button-reset {
+        border: none;
+        background: none;
+        color: inherit;
+        cursor: pointer;
+        padding: 0;
+        font: inherit;
+    }
+
+    /* フォームのインライン表示 */
+    .form-inline {
+        display: inline;
+    }
+
+    /* メインコンテンツエリア */
+    main {
+        flex: 1;
+        background-color: lightgray;
+        padding: 20px;
+    }
+
+    /* フッターのスタイル */
+    footer {
+        background-color: #f8f9fa;
+        color: #333;
+        text-align: center;
+        padding: 10px;
+        height: auto;
+        min-height: 40px;
+    }
+
+    .footer__title {
+        font-size: 14px;
+    }
