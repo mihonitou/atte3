@@ -5,8 +5,8 @@
 @endsection
 
 @section('content')
-<form class="header__wrap" action="{{ route('dateAttendance') }}" method="post">
-    @csrf
+<form class="header__wrap" action="{{ route('attendance') }}" method="get">
+
     <button class="date__change-button" name="dateChange" value="prev">
         << /button>
             <input type="hidden" name="displayDate" value="{{ $displayDate }}">

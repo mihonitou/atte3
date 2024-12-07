@@ -24,7 +24,7 @@
                     <a class="header__item-link" href="/">{{ __('ホーム') }}</a>
                 </li>
                 <li class="header__item">
-                    <a class="header__item-link" href="{{ route('dateAttendance') }}">{{ __('日付一覧') }}</a>
+                    <a class="header__item-link" href="{{ route('attendance') }}">{{ __('日付一覧') }}</a>
                 </li>
                 <li class="header__item">
                     <!-- ログアウトフォーム -->

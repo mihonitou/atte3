@@ -5,41 +5,43 @@
 @endsection
 
 @section('content')
+
 <div class="header__wrap">
     <p class="header__text">
         {{ Auth::user()->name }}さんお疲れ様です！
     </p>
 </div>
 
-<form class="form__wrap" action="{{ route('work') }}" method="post">
-    @csrf
+<div class="button__container">
 
-    {{-- 勤務開始ボタン --}}
-    <div class="form__item">
-        <input type="checkbox" id="start_work" name="start_work" class="form__item-input"
-            @if ($status !==0) disabled @endif>
-        <label for="start_work" class="form__item-button">勤務開始</label>
-    </div>
+    @if (session('message'))
+    <div class="alert-success">{{ session('message') }}</div>
+    @endif
 
-    {{-- 勤務終了ボタン --}}
-    <div class="form__item">
-        <input type="checkbox" id="end_work" name="end_work" class="form__item-input"
-            @if ($status !==1) disabled @endif>
-        <label for="end_work" class="form__item-button">勤務終了</label>
-    </div>
+    @if (session('error'))
+    <div class="alert-danger">{{ session('error') }}</div>
+    @endif
 
-    {{-- 休憩開始ボタン --}}
-    <div class="form__item">
-        <input type="checkbox" id="start_rest" name="start_rest" class="form__item-input"
-            @if ($status !==1) disabled @endif>
-        <label for="start_rest" class="form__item-button">休憩開始</label>
-    </div>
+    <form method="POST" action="{{ route('attendance.startWork') }}">
+        @csrf
+        <button type="submit" class="button__container-item" {{ $buttonStates['start_work'] ? '' : 'disabled' }}>勤務開始</button>
+    </form>
 
-    {{-- 休憩終了ボタン --}}
-    <div class="form__item">
-        <input type="checkbox" id="end_rest" name="end_rest" class="form__item-input"
-            @if ($status !==2) disabled @endif>
-        <label for="end_rest" class="form__item-button">休憩終了</label>
-    </div>
-</form>
+    <form method="POST" action="{{ route('attendance.endWork') }}">
+        @csrf
+        <button type="submit" class="button__container-item" {{ $buttonStates['end_work'] ? '' : 'disabled' }}>勤務終了</button>
+    </form>
+
+    <form method="POST" action="{{ route('attendance.startRest') }}">
+        @csrf
+        <button type="submit" class="button__container-item" {{ $buttonStates['start_rest'] ? '' : 'disabled' }}>休憩開始</button>
+    </form>
+
+    <form method="POST" action="{{ route('attendance.endRest') }}">
+        @csrf
+        <button type="submit" class="button__container-item" {{ $buttonStates['end_rest'] ? '' : 'disabled' }}>休憩終了</button>
+    </form>
+
+</div>
+
 @endsection
