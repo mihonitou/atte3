@@ -7,11 +7,14 @@
 @section('content')
 <form class="header__wrap" action="{{ route('attendance') }}" method="get">
 
-    <button class="date__change-button" name="dateChange" value="prev">
-        << /button>
-            <input type="hidden" name="displayDate" value="{{ $displayDate }}">
-            <p class="header__text">{{ $displayDate ? $displayDate->format('Y-m-d') : 'N/A' }}</p>
-            <button class="date__change-button" name="dateChange" value="next">></button>
+        <button class="date__change-button" name="dateChange" value="prev">
+        <
+        </button>
+        <input type="hidden" name="displayDate" value="{{ $displayDate }}">
+        <p class="header__text">{{ $displayDate ? $displayDate->format('Y-m-d') : 'N/A' }}</p>
+        <button class="date__change-button" name="dateChange" value="next">
+        >
+        </button>
 </form>
 
 <div class="table__wrap">

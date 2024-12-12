@@ -32,24 +32,24 @@
 }
 
 .table__wrap {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    display: block;
     width: 80%;
     margin: auto;
 }
 
 .attendance__table {
     width: 100%;
+    border-collapse: collapse; /* テーブルのボーダーをきれいにする */
+    text-align: left;
 }
 
 .table__header,
 .table__data {
     width: 20%;
-    text-align: left;
-    padding-left: 5%;
-    height: 70px;
+    text-align: center;
+    padding: 10%;
     border-top: 1px solid gray;
+    height: 70px;
 }
 
 /* レスポンシブ対応 */
@@ -70,6 +70,7 @@
 
     .table__header,
     .table__data {
-        padding-left: 2%;
+        padding: 5px;
+        font-size: 14px;
     }
 }

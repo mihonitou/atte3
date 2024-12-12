@@ -1,11 +1,11 @@
-.alert-success {
+.alert__success {
     padding: 10px 30px;
     border-color: #badbcc;
     background-color: #d1e7dd;
     color: #0f5132;
 }
 
-.alert-danger {
+.alert__danger {
     padding: 10px 30px;
     border-color: #f5c2c7;
     background-color: #f8d7da;
