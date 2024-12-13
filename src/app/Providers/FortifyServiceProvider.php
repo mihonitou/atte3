@@ -6,7 +6,7 @@ use App\Actions\Fortify\CreateNewUser;
 use Laravel\Fortify\Fortify;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
-use App\Http\Requests\LoginRequest;
+use Illuminate\Support\Facades\Validator;
 use App\Models\User;
 use Illuminate\Support\ServiceProvider;
 
@@ -39,14 +39,21 @@ class FortifyServiceProvider extends ServiceProvider
          * Fortify のログイン処理をカスタマイズ
          */
         Fortify::authenticateUsing(function (Request $request) {
-            // LoginRequest を使用してバリデーションを実行
-            $loginRequest = new LoginRequest();
-            $loginRequest->merge($request->all());
-            $loginRequest->validate();
+            // バリデーションを直接実行
+            $credentials = $request->only('email', 'password');
+
+            Validator::make($credentials, [
+                'email' => 'required|email',
+                'password' => 'required|string',
+            ], [
+                'email.required' => 'メールアドレスを入力してください',
+                'email.email' => '有効なメールアドレスを入力してください',
+                'password.required' => 'パスワードを入力してください',
+            ])->validate();
 
             // ユーザー認証
-            $user = User::where('email', $request->email)->first();
-            if ($user && Hash::check($request->password, $user->password)) {
+            $user = User::where('email', $credentials['email'])->first();
+            if ($user && Hash::check($credentials['password'], $user->password)) {
                 return $user;
             }
 
