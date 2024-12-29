@@ -10,9 +10,6 @@
     <p class="header__text">
         {{ Auth::user()->name }}さんお疲れ様です！
     </p>
-</div>
-
-<div class="button__container">
 
     @if (session('message'))
     <div class="alert__success">{{ session('message') }}</div>
@@ -21,27 +18,28 @@
     @if (session('error'))
     <div class="alert__danger">{{ session('error') }}</div>
     @endif
+</div>
 
-    <form method="post" action="{{ route('attendance.startWork') }}">
+<div class="button__container">
+    <form method="POST" action="{{ route('attendance.startWork') }}">
         @csrf
         <button type="submit" class="button__container-item" {{ $buttonStates['start_work'] ? '' : 'disabled' }}>勤務開始</button>
     </form>
 
-    <form method="post" action="{{ route('attendance.endWork') }}">
+    <form method="POST" action="{{ route('attendance.endWork') }}">
         @csrf
         <button type="submit" class="button__container-item" {{ $buttonStates['end_work'] ? '' : 'disabled' }}>勤務終了</button>
     </form>
 
-    <form method="post" action="{{ route('attendance.startRest') }}">
+    <form method="POST" action="{{ route('attendance.startRest') }}">
         @csrf
         <button type="submit" class="button__container-item" {{ $buttonStates['start_rest'] ? '' : 'disabled' }}>休憩開始</button>
     </form>
 
-    <form method="post" action="{{ route('attendance.endRest') }}">
+    <form method="POST" action="{{ route('attendance.endRest') }}">
         @csrf
         <button type="submit" class="button__container-item" {{ $buttonStates['end_rest'] ? '' : 'disabled' }}>休憩終了</button>
     </form>
-
 </div>
 
 @endsection
