@@ -6,12 +6,12 @@
     <ul class="pagination__nav" role="navigation">
         {{-- 前のページリンク --}}
         @if ($paginator->onFirstPage())
-        <li class="pagination__list" aria-disabled="true" aria-label="@lang('pagination.previous', '前のページ')">
+        <li class="pagination__list" aria-disabled="true" aria-label="@lang('pagination.previous')">
             <span class="pagination__item">‹</span>
         </li>
         @else
         <li class="pagination__list">
-            <a class="pagination__item" href="{{ $paginator->previousPageUrl() }}" rel="prev" aria-label="@lang('pagination.previous', '前のページ')">‹</a>
+            <a class="pagination__item" href="{{ $paginator->previousPageUrl() }}" rel="prev" aria-label="@lang('pagination.previous')">‹</a>
         </li>
         @endif
 
@@ -41,10 +41,10 @@
         {{-- 次のページリンク --}}
         @if ($paginator->hasMorePages())
         <li class="pagination__list">
-            <a class="pagination__item" href="{{ $paginator->nextPageUrl() }}" rel="next" aria-label="@lang('pagination.next', '次のページ')">›</a>
+            <a class="pagination__item" href="{{ $paginator->nextPageUrl() }}" rel="next" aria-label="@lang('pagination.next')">›</a>
         </li>
         @else
-        <li class="pagination__list" aria-disabled="true" aria-label="@lang('pagination.next', '次のページ')">
+        <li class="pagination__list" aria-disabled="true" aria-label="@lang('pagination.next')">
             <span class="pagination__item">›</span>
         </li>
         @endif
