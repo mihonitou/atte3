@@ -31,12 +31,13 @@ class AttendancesTableSeeder extends Seeder
             User::create($userData);
         }
 
-        // 2. 勤怠データの作成
-        $startOfMonth = Carbon::create(2024, 12, 1);
-        $endOfMonth = Carbon::create(2024, 12, 31);
+        // 2. ユーザーを明示的に取得
         $users = User::all();
 
+        // 3. 各ユーザーごとに31日分の勤怠データを作成
         foreach ($users as $user) {
+            $startOfMonth = Carbon::create(2024, 12, 1);
+            $endOfMonth = Carbon::create(2024, 12, 31);
             $currentDate = $startOfMonth;
 
             while ($currentDate->lte($endOfMonth)) {

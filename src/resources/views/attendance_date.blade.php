@@ -6,15 +6,14 @@
 
 @section('content')
 <form class="header__wrap" action="{{ route('attendance') }}" method="get">
-
-        <button class="date__change-button" name="dateChange" value="prev">
+    <button class="date__change-button" name="dateChange" value="prev">
         <
-        </button>
-        <input type="hidden" name="displayDate" value="{{ $displayDate }}">
-        <p class="header__text">{{ $displayDate ? $displayDate->format('Y-m-d') : 'N/A' }}</p>
-        <button class="date__change-button" name="dateChange" value="next">
+    </button>
+    <input type="hidden" name="displayDate" value="{{ $displayDate }}">
+    <p class="header__text">{{ $displayDate ? $displayDate->format('Y-m-d') : 'N/A' }}</p>
+    <button class="date__change-button" name="dateChange" value="next">
         >
-        </button>
+    </button>
 </form>
 
 <div class="table__wrap">
@@ -27,13 +26,13 @@
             <th class="table__header">勤務時間</th>
         </tr>
 
-        @foreach ($users as $user)
+        @foreach ($paginatedAttendances as $attendance)
         <tr class="table__row">
-            <td class="table__data">{{ $user->name ?? 'N/A' }}</td>
-            <td class="table__data">{{ $user->start ?? 'N/A' }}</td>
-            <td class="table__data">{{ $user->end ?? 'N/A' }}</td>
-            <td class="table__data">{{ $user->total_rest ?? 'N/A' }}</td>
-            <td class="table__data">{{ $user->total_work ?? 'N/A' }}</td>
+            <td class="table__data">{{ $attendance->user->name ?? 'N/A' }}</td> {{-- ユーザー名を取得 --}}
+            <td class="table__data">{{ $attendance->start ?? 'N/A' }}</td>
+            <td class="table__data">{{ $attendance->end ?? 'N/A' }}</td>
+            <td class="table__data">{{ $attendance->total_rest ?? 'N/A' }}</td>
+            <td class="table__data">{{ $attendance->total_work ?? 'N/A' }}</td>
         </tr>
         @endforeach
     </table>
@@ -41,6 +40,6 @@
 
 {{-- ページネーション --}}
 <div class="pagination__container">
-    {{ $users->links('vendor/pagination/paginate') }}
+    {{ $paginatedAttendances->links('vendor/pagination/paginate') }}
 </div>
 @endsection
